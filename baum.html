@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>LaraCollectif by Shoodey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../assets/css/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../assets/css/github-light.css" media="screen">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+<section class="page-header">
+    <h1 class="project-name">Gestion des catégories</h1>
+
+
+</section>
+
+<section class="main-content">
+
+    <h1><i class="fa fa-archive"></i> Système de gestion de catégories</h1>
+    <p class="project-tagline">Système de gestion des catégories sous <a href="https://github.com/etrepat/baum">Baum</a></p>
+    <hr/>
+
+    <h2><i class="fa fa-cogs"></i> Installation</h2>
+    <p>Suivre la documentation de <a href="https://github.com/etrepat/baum">Baum</a></p>
+
+    <h2><i class="fa fa-database"></i> Migration</h2>
+    <p>Modifier le fichier de migration vers <a href="https://gist.github.com/121c1573e42c6404d5b2">celui ci.</a></p>
+    <p>Lancer ensuite <code>php artisan migrate</code>.</p>
+
+    <h2><i class="fa fa-road"></i> Route</h2>
+    <p>Ajouter à <code>routes.php</code> le code :</p>
+    <p><code>Route::resource('categories', 'CategoriesController');</code></p>
+
+    <h2><i class="fa fa-codepen"></i> Model</h2>
+    <p>Modifier le fichier Category.php vers:</p>
+    <pre>
+        <&quest;php
+
+        namespace App;
+
+        use Baum\Node;
+
+        class Category extends Node
+        {
+        &nbsp;protected $table = 'categories';
+        }
+    </pre>
+
+    <h2><i class="fa fa-code"></i> Controller</h2>
+    <p>Créer le controller <code>CategoriesController.php</code> et y mettre pour les fonctions <code>create</code> & <code>store</code> :</p>
+    <pre>
+        public function create()
+        {
+            $categories = Category::getNestedListWithArrow('display_name');
+            $categories = ['0' => 'Aucun parent'] + $categories;
+            return view('categories.admin.create', compact('categories'));
+        }
+    </pre>
+    <pre>
+        public function store(CategoriesRequest $request)
+        {
+            if($request->input('parent_id') == 0){
+                $request->path = "uploads/{$request->name}";
+                Category::create($request->only('name', 'display_name', 'description', 'path'));
+                Storage::makeDirectory($request->path);
+            }else{
+                $parent = Category::findOrFail($request->input('parent_id'));
+                $request->path = "uploads/";
+                foreach($parent->getAncestorsAndSelf() as $ancestor){
+                    $request->path .= "{$ancestor->name}/";
+            }
+                $request->path .= "{$request->name}";
+                Storage::makeDirectory($request->path);
+                $parent->children()->create($request->only('name', 'display_name', 'description'));
+            }
+            return redirect(route('admin.categories.create'))->with('La catégorie a bien été créée.');
+        }
+    </pre>
+    <p>Il faut se rendre dans le fichier <code>vendor/baum/baum/src/baum/node.php</code> et rajouter la fonction <code>getNestedListWithArrow</code> en dessous de la fonction <code>getNestedList</code> et y mettre :</p>
+    <pre>
+        public static function getNestedListWithArrow($column, $key = null, $seperator = "&amp;#8627; ")
+        {
+            $instance = new static;
+
+            $key = $key ?: $instance->getKeyName();
+            $depthColumn = $instance->getDepthColumnName();
+
+
+            $nodes = $instance->newNestedSetQuery()->get()->toArray();
+            return array_combine(array_map(function ($node) use ($key) {
+                return $node[$key];
+            }, $nodes), array_map(function ($node) use ($seperator, $depthColumn, $column) {
+                return str_repeat("&amp;nbsp;&amp;nbsp;&amp;nbsp;", $node[$depthColumn]) . $seperator . $node[$column];
+            }, $nodes));
+        }
+    </pre>
+
+    <h2><i class="fa fa-file-code-o"></i> Views</h2>
+    <p>Créer la vue <code>categories/admin/create.blade.php</code> et y mettre le code :</p>
+    <pre>
+@extends('admin')<br/><br/>@section('title', '- Categories')<br/><br/>@section('content')<br/>    &lt;ol class=&quot;breadcrumb&quot;&gt;<br/>        &lt;li&gt;&lt;a href=&quot;{{ route('dashboard') }}&quot;&gt;Dashboard&lt;/a&gt;&lt;/li&gt;<br/>        &lt;li&gt;&lt;a href=&quot;{{ route('admin.categories.index') }}&quot;&gt;Cat&eacute;gories&lt;/a&gt;&lt;/li&gt;<br/>        &lt;li class=&quot;active&quot;&gt;Ajouter&lt;/li&gt;<br/>    &lt;/ol&gt;<br/><br/>    &lt;h1 class=&quot;page-header&quot;&gt;Ajouter une cat&eacute;gorie&lt;/h1&gt;<br/>    {!! BootForm::open()-&gt;post()-&gt;action(route('admin.categories.store')) !!}<br/>        {!! BootForm::text('Nom de la cat&eacute;gorie', 'display_name') !!}<br/>        {!! BootForm::text('Nom du dossier', 'name') !!}<br/>        {!! BootForm::hidden('path') !!}<br/>        {!! BootForm::textarea('Description', 'description') !!}<br/>        {!! BootForm::select('Cat&eacute;gorie Parente', 'parent_id')-&gt;options($categories) !!}<br/>        {!! BootForm::submit('Enregistrer')-&gt;addClass('btn-primary pull-right') !!}<br/>    {!! BootForm::close() !!}<br/>@endsection
+    </pre>
+
+    <h2><i class="fa fa-tasks"></i> Request</h2>
+    <p>Créer <code>CategoriesRequest.php</code> et y mettre le <a href="https://gist.github.com/9e869d29e0e1247550ed">code suivant</a>.</p>
+
+    <h2><i class="fa fa-folder-open"></i> Dossiers</h2>
+    <p>Les dossiers créés se trouvent dans <code>storage/app</code>.</p>
+
+    <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Shoodey/laracollectif">LaraCollectif</a> is maintained by <a href="https:shoodey.github.io">Shoodey</a>.</span>
+    </footer>
+
+</section>
+
+
+</body>
+</html>
+
