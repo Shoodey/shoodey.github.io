@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iHK | Interactive</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="fonts/icomoon/icomoon.css"/>
+    <link rel="stylesheet" type="text/css" href="css/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="css/component.css"/>
+    <link rel="stylesheet" type="text/css" href="css/animations.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="js/modernizr-custom.js"></script>
+</head>
+<body>
+<header class="codrops-header">
+    <img class="spin" src="img/logo.png" alt="">
+    <h1>i<span>H</span>ouse<span>K</span>eep <span class="small-title">&nbsp;&nbsp;Except I don't !</span></h1>
+</header>
+<p class="info info--size">View on a larger screen to see the 3D display</p>
+<p class="info info--support">Your browser does not support preserve-3d!</p>
+<div id="slideshow" class="slideshow">
+    <div class="slide">
+        <div class="scene">
+            <div class="views">
+                <div class="view">
+                    <img class="view__img" src="img/bedroom/a.jpg" alt="Side"/>
+                    <div class="item item--horse">
+                        <img class="item__img" src="img/bedroom/horse.jpg" alt="Horse" data-transform-z="60"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Decorative Horse</h3>
+                            <div class="item__action">Clean</div>
+                            <button class="button button--action">
+                                <i class="fa fa-paint-brush horse"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="view view--rotate view--rotate-left">
+                    <img class="view__img" src="img/bedroom/b.jpg" alt="Front"/>
+                    <div class="item item--blanket">
+                        <img class="item__img" src="img/bedroom/blanket.jpg" alt="Blanket" data-transform-z="90"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Bed Sheets</h3>
+                            <div class="item__action">Organize</div>
+                            <button class="button button--action">
+                                <i class="fa fa-bed bed"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                    <div class="item item--picture">
+                        <img class="item__img" src="img/bedroom/picture.jpg" alt="Picture" data-transform-z="80"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Picture Frames</h3>
+                            <div class="item__action">Clean</div>
+                            <button class="button button--action">
+                                <i class="fa fa-paint-brush frame"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="scene">
+            <div class="views">
+                <div class="view view--rotate view--rotate-right">
+                    <img class="view__img" src="img/living/a.jpg" alt="Front"/>
+                    <div class="item item--pillow">
+                        <img class="item__img" src="img/living/pillow.jpg" alt="Vase" data-transform-z="60"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Pillows</h3>
+                            <div class="item__action">Reorder</div>
+                            <button class="button button--action">
+                                <i class="fa fa-crop pillows"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                    <div class="item item--lamp">
+                        <img class="item__img" src="img/living/lamp.jpg" alt="Lamp" data-transform-z="60"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Lamp</h3>
+                            <div class="item__action">Turn on/off</div>
+                            <button class="button button--action">
+                                <i class="fa fa-lightbulb-o lightbulb"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                    <div class="item item--silvervase">
+                        <img class="item__img" src="img/living/silvervase.jpg" alt="Silver Vase" data-transform-z="60"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Vase</h3>
+                            <div class="item__action">Water</div>
+                            <button class="button button--action">
+                                <i class="fa fa-tint vase"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="view">
+                    <img class="view__img" src="img/living/b.jpg" alt="Side"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="scene">
+            <div class="views">
+                <div class="view">
+                    <img class="view__img" src="img/kitchen/a.jpg" alt="Side"/>
+                    <div class="item item--shakers">
+                        <img class="item__img" src="img/kitchen/shakers.jpg" alt="Shakers" data-transform-z="80"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Spices</h3>
+                            <div class="item__action">Refill</div>
+                            <button class="button button--action">
+                                <i class="fa fa-refresh shakers"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                    <div class="item item--coffeemachine">
+                        <img class="item__img" src="img/kitchen/coffeemachine.jpg" alt="Coffee Machine"
+                             data-transform-z="60"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Coffee Machine</h3>
+                            <div class="item__action">Make Coffee</div>
+                            <button class="button button--action">
+                                <i class="fa fa-coffee coffee"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="view view--rotate view--rotate-left">
+                    <img class="view__img" src="img/kitchen/b.jpg" alt="Front"/>
+                    <div class="item item--bowls">
+                        <img class="item__img" src="img/kitchen/bowlset.jpg" alt="Bowl Set" data-transform-z="40"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Bowl Set</h3>
+                            <div class="item__action">Reach for</div>
+                            <button class="button button--action">
+                                <i class="fa fa-arrows-v bowlset"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="scene">
+            <div class="views">
+                <div class="view">
+                    <img class="view__img" src="img/bathroom/a.jpg" alt="Side"/>
+                </div>
+                <div class="view">
+                    <img class="view__img" src="img/bathroom/b.jpg" alt="Front"/>
+                    <div class="item item--sink">
+                        <img class="item__img" src="img/bathroom/sink.jpg" alt="Sink" data-transform-z="40"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Sink</h3>
+                            <div class="item__action">Clean</div>
+                            <button class="button button--action">
+                                <i class="fa fa-shower sink"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="view view--rotate view--rotate-left">
+                    <img class="view__img" src="img/bathroom/c.jpg" alt="Front"/>
+                    <div class="item item--bidet">
+                        <img class="item__img" src="img/bathroom/toilet.jpg" alt="Bidet" data-transform-z="90"/>
+                        <div class="item__info">
+                            <h3 class="item__title">Toilet</h3>
+                            <div class="item__action">Unclog</div>
+                            <button class="button button--action">
+                                <i class="fa fa-ban toilet"></i></button>
+                        </div>
+                        <button class="button button--close"><i class="icon icon--close"></i><span class="text-hidden">Close</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="nav">
+        <a href="#" class="nav__item"><span class="text-hidden">The Bedroom</span></a>
+        <a href="#" class="nav__item"><span class="text-hidden">The Living Room</span></a>
+        <a href="#" class="nav__item"><span class="text-hidden">The Kitchen</span></a>
+        <a href="#" class="nav__item"><span class="text-hidden">The Bathroom</span></a>
+    </nav>
+    <div class="titles">
+        <h2 class="title">The Bedroom <span class="title__sub">Relax</span></h2>
+        <h2 class="title">The Living Room <span class="title__sub">Socialize</span></h2>
+        <h2 class="title">The Kitchen <span class="title__sub">Create</span></h2>
+        <h2 class="title">The Bathroom <span class="title__sub">Refresh</span></h2>
+    </div>
+</div><!-- /container -->
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+
+    $(function () {
+        var slideshow = new Slideshow(document.getElementById('slideshow'));
+        toastr.options = {
+            "debug": false,
+            "positionClass": "toast-bottom-right",
+            "onclick": null,
+            "fadeIn": 300,
+            "fadeOut": 0,
+            "timeOut": 2000,
+            "extendedTimeOut": 1000
+        }
+
+        var elements = [];
+        var action = $('.button--action')
+        action.click(function () {
+            var element = $(this).find('.fa').prop('classList')[2]
+            if(elements.includes(element)){
+                toastr.error("Task \"" + element + "\" already exists.")
+            }else{
+                if(elements.length <= 5){
+                    elements.push(element)
+                    toastr.success("Task \"" + element + "\" added to queue.")
+                }else{
+                    toastr.warning('Queue overloaded.')
+                }
+            }
+            console.log(element)
+            $('.button--close').click()
+        })
+    })
+</script>
+</body>
+</html>

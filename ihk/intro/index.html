@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iHK | Intro</title>
+    <meta name="description" content="Background image segment effect"/>
+    <meta name="keywords" content="css, html, backgorund image, effect, boxes, segments"/>
+    <meta name="author" content="Codrops"/>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="css/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="css/component.css"/>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script>
+      document.documentElement.className = 'js';
+    </script>
+</head>
+<body class="demo-2">
+<main>
+    <div class="segmenter" style="background-image: url(img/bg.jpg)"></div>
+    <h2 class="trigger-headline trigger-headline--hidden">
+        <span>i</span>
+        <span>H</span>
+        <span>K</span>
+    </h2>
+    <div class="bottom-nav">
+        <button class="btn btn--trigger">Show me the Future</button>
+        <a href="../interactive/index.html" class="btn btn--manage btn--hidden">Start</a>
+    </div>
+</main>
+<script src="js/anime.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+  (function () {
+    var headline = document.querySelector('.trigger-headline'),
+        trigger = document.querySelector('.btn--trigger'),
+        manage = document.querySelector('.btn--manage'),
+        segmenter = new Segmenter(document.querySelector('.segmenter'), {
+          pieces: 4,
+          animation: {
+            duration: 1500,
+            easing: 'easeInOutExpo',
+            delay: 100,
+            translateZ: 100
+          },
+          parallax: true,
+          positions: [
+            {top: 0, left: 0, width: 45, height: 45},
+            {top: 55, left: 0, width: 45, height: 45},
+            {top: 0, left: 55, width: 45, height: 45},
+            {top: 55, left: 55, width: 45, height: 45}
+          ],
+          onReady: function () {
+            trigger.classList.remove('btn--hidden');
+            trigger.addEventListener('click', function () {
+              segmenter.animate();
+              headline.classList.remove('trigger-headline--hidden');
+              this.classList.add('btn--hidden');
+              manage.classList.remove('btn--hidden');
+            });
+          }
+        });
+  })();
+</script>
+</body>
+</html>
