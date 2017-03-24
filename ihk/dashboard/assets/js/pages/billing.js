@@ -9,7 +9,7 @@ $(document).ready(function () {
             timeOut: 5000,
             positionClass: "toast-bottom-right"
         };
-        toastr.success('Checkout settings menu on left!', 'Payment successful');
+        toastr.success('Payment successful');
     })
 
 });
