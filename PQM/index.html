@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>IT Project Failure: DMV Case</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>IT Project Failure</h1>
+            <img src="img/logo-DMV.png" alt="DMV Logo">
+            <h2>DMV Case</h2>
+        </section>
+
+        <section data-background="#FFFFFF">
+            <section>
+                <h1>Story</h1>
+            </section>
+
+            <section>
+                <p>California state spent the 1990s attempting to computerize their DMV
+                    <small>Department of Motor Vehicules</small>
+                </p>
+            </section>
+
+            <section id="fragments">
+                <ul>
+                    <li class="fragment">Started in 1987.</li>
+                    <li class="fragment">Over 5 years.</li>
+                    <li class="fragment">$27M plan.</li>
+                    <li class="fragment">31M drivers' licences.</li>
+                    <li class="fragment">38M vehicule registrations.</li>
+                </ul>
+            </section>
+        </section>
+
+
+        <section data-background="#C93C3C">
+            <section>
+                <h1>What went wrong</h1>
+            </section>
+
+            <section>
+                <p>Solocited a bid from one company.</p>
+                <img src="img/Tandem_Computers_logo.jpg" alt="Tandem Computers Logo">
+            </section>
+
+            <section>
+                <p>CA state ended up buying Tandem hardware as well.</p>
+                <p>6 computers at a cost of $11.9M</p>
+            </section>
+
+            <section>
+                <p>The new system was slower than the one it was designed to replace.</p>
+                <p>Abandonned in 1994.</p>
+            </section>
+        </section>
+
+       <section data-background="#EB8A2F">
+           <section>
+               <h1>Repercussions</h1>
+           </section>
+
+           <section>
+               <blockquote>
+                   An unworkable system that could not be fixed without the expenditure of millions more.
+               </blockquote>
+               <p>San Fransico Chronicle - Feb 1994</p>
+           </section>
+
+           <section>
+               <blockquote>
+                   A failed $44M computer project.
+               </blockquote>
+               <p>the Chronicle - Mai 1994</p>
+           </section>
+
+           <section>
+               <p>The project cost peaked at $49M, costing money even after being shut down.</p>
+           </section>
+       </section>
+
+        <section data-background="#2BB57B">
+            <section>
+                <h1>Moral</h1>
+            </section>
+
+            <section>
+                <p>No project should rely on a unique supplier.</p>
+            </section>
+
+            <section>
+                <p>Projection should have been made to fully estimate the project cost, faisability & performance.</p>
+            </section>
+
+            <section data-background="http://ww2.kqed.org/pop/wp-content/uploads/sites/12/2016/08/pvz736wo5710e535233fe957237487.gif" data-background-repeat="false">
+                <blockquote style="color: white; background-color:rgba(46,46,46,0.8);">When a project is obviously doomed to failure...</blockquote>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
